@@ -9,36 +9,42 @@
 
 window.onload = function () {
     google.accounts.id.initialize({
-      client_id: "879873924784-cfi7nis3k852gh17i3ma51ni6ge60ogf.apps.googleusercontent.com",
-      callback: handleCredentialResponse
+        client_id: "879873924784-cfi7nis3k852gh17i3ma51ni6ge60ogf.apps.googleusercontent.com",
+        callback: handleCredentialResponse
     });
     google.accounts.id.renderButton(
-      document.getElementById("buttonDiv"),
-      { theme: "outline", size: "large" }  // customization attributes
+        document.getElementById("buttonDiv"),
+        { theme: "outline", size: "large" }  // customization attributes
     );
     google.accounts.id.prompt(); // also display the One Tap dialog
-  }
+}
 
-  function decodeJwtResponse(token) {
+function decodeJwtResponse(token) {
     var base64Url = token.split(".")[1];
     var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
     var jsonPayload = decodeURIComponent(
-      atob(base64)
-        .split("")
-        .map(function (c) {
-          return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-        })
-        .join("")
+        atob(base64)
+            .split("")
+            .map(function (c) {
+                return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+            })
+            .join("")
     );
     return JSON.parse(jsonPayload);
-  }
+}
+
+function init() {
+    gapi.load('auth2', function () {
+        /* Ready. Make a call to gapi.auth2.init or some other API */
+    });
+}
 
 function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
         alert("you have been signedout successfully");
         console.log('User signed out.');
-        $(".g-signin2").css("display", "block");
+        $(".g_id_signin").css("display", "block");
         $(".data").css("display", "none");
     });
 }
@@ -64,7 +70,6 @@ function handleCredentialResponse(response) {
     $("#image").attr('src', responsePayload.picture);
     $(".data").css("display", "block");
     $(".g_id_signin").css("display", "none");
- }
+}
 
- 
- 
+
