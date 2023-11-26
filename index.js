@@ -34,9 +34,9 @@ function decodeJwtResponse(token) {
 }
 
 function init() {
-    gapi.load('auth2', function () {
-        /* Ready. Make a call to gapi.auth2.init or some other API */
-    });
+    gapi.load('auth2', function() {
+        gapi.auth2.init();
+      });
 }
 
 function signOut() {
