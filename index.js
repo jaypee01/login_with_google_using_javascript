@@ -34,9 +34,11 @@ function decodeJwtResponse(token) {
 }
 
 function init() {
-    gapi.load('auth2', function() {
-        gapi.auth2.init();
-      });
+    gapi.load('auth2', function () {
+        gapi.auth2.init({
+            client_id: "879873924784-cfi7nis3k852gh17i3ma51ni6ge60ogf.apps.googleusercontent.com"
+        });
+    });
 }
 
 function signOut() {
