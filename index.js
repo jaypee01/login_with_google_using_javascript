@@ -7,6 +7,18 @@
 //     $(".g-signin2").css("display", "none");
 // }
 
+window.onload = function () {
+    google.accounts.id.initialize({
+      client_id: "879873924784-cfi7nis3k852gh17i3ma51ni6ge60ogf.apps.googleusercontent.com",
+      callback: handleCredentialResponse
+    });
+    google.accounts.id.renderButton(
+      document.getElementById("buttonDiv"),
+      { theme: "outline", size: "large" }  // customization attributes
+    );
+    google.accounts.id.prompt(); // also display the One Tap dialog
+  }
+
 function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
@@ -21,6 +33,7 @@ function handleCredentialResponse(response) {
     // decodeJwtResponse() is a custom function defined by you
     // to decode the credential response.
 
+    const responsePayload = decodeJwtResponse(response.credential);
 
     console.log("ID: " + responsePayload.sub);
     console.log('Full Name: ' + responsePayload.name);
@@ -29,10 +42,13 @@ function handleCredentialResponse(response) {
     console.log("Image URL: " + responsePayload.picture);
     console.log("Email: " + responsePayload.email);
 
-    const responsePayload = decodeJwtResponse(response.credential);
+
     $("#name").text(responsePayload.name);
     $("#email").text(responsePayload.email);
     $("#image").attr('src', responsePayload.picture);
     $(".data").css("display", "block");
     $(".g_id_signin").css("display", "none");
  }
+
+ 
+ 
