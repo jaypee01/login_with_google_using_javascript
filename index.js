@@ -43,6 +43,8 @@ function signOut() {
 }
 
 function handleCredentialResponse(response) {
+
+    console.log("jwtresponse :" + response);
     // decodeJwtResponse() is a custom function defined by you
     // to decode the credential response.
 
