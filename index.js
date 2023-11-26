@@ -30,6 +30,7 @@ window.onload = function () {
         })
         .join("")
     );
+    return JSON.parse(jsonPayload);
   }
 
 function signOut() {
