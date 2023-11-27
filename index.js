@@ -67,7 +67,7 @@ function handleCredentialResponse(response) {
     $("#email").text(responsePayload.email);
     $("#image").attr('src', responsePayload.picture);
     $(".data").css("display", "block");
-    //$(".g_id_signin").css("display", "none");
+    $("#g_signin_button").css("display", "none");
 }
 
 
