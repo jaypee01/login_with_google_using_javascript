@@ -33,7 +33,7 @@ function decodeJwtResponse(token) {
 
 function handleCredentialResponse(response) {
 
-    console.log("full responsePayload : " + JSON.stringify(decodeJwtResponse(response)));
+    console.log("full responsePayload : " + JSON.stringify(response));
     const responsePayload = decodeJwtResponse(response.credential);
 
     console.log("responsePayload credential: " + JSON.stringify(responsePayload));
