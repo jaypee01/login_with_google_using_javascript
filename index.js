@@ -4,7 +4,7 @@ window.onload = function () {
         callback: handleCredentialResponse
     });
     google.accounts.id.renderButton(
-        document.getElementById("buttonDiv"),
+        document.getElementById("g_id_signin"),
         { theme: "outline", size: "large" }  // customization attributes
     );
     google.accounts.id.prompt(); // also display the One Tap dialog
@@ -48,7 +48,7 @@ function handleCredentialResponse(response) {
 
     const responsePayload = decodeJwtResponse(response.credential);
 
-    console.log("responsePayload : " + responsePayload);
+    console.log("responsePayload : " + JSON.stringify(responsePayload));
 
 
     console.log('Full Name: ' + responsePayload.name);
