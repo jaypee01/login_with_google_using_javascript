@@ -14,7 +14,7 @@ window.onload = function () {
             logo_alignment: "center"
         }  // customization attributes
     );
-    //google.accounts.id.prompt(); // also display the One Tap dialog
+    google.accounts.id.prompt(); // also display the One Tap dialog
 }
 
 function decodeJwtResponse(token) {
@@ -31,37 +31,11 @@ function decodeJwtResponse(token) {
     return JSON.parse(jsonPayload);
 }
 
-// function init() {
-//     gapi.load('auth2', function() {
-//         gapi.auth2.init();
-//       });
-// }
-
-// function signOut() {
-//     var auth2 = gapi.auth2.getAuthInstance();
-//     auth2.signOut().then(function () {
-//         alert("you have been signedout successfully");
-//         console.log('User signed out.');
-//         $(".g_id_signin").css("display", "block");
-//         $(".data").css("display", "none");
-//     });
-// }
-
 function handleCredentialResponse(response) {
-
-    console.log("jwtresponse :" + JSON.stringify(response));
-    // decodeJwtResponse() is a custom function defined by you
-    // to decode the credential response.
 
     const responsePayload = decodeJwtResponse(response.credential);
 
     console.log("responsePayload : " + JSON.stringify(responsePayload));
-
-
-    console.log('Full Name: ' + responsePayload.name);
-    console.log("Image URL: " + responsePayload.picture);
-    console.log("Email: " + responsePayload.email);
-
 
     $("#name").text(responsePayload.name);
     $("#email").text(responsePayload.email);
