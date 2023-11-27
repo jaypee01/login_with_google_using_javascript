@@ -4,10 +4,17 @@ window.onload = function () {
         callback: handleCredentialResponse
     });
     google.accounts.id.renderButton(
-        document.getElementById("g_id_signin"),
-        { theme: "outline", size: "large" }  // customization attributes
+        document.getElementById("g_signin_button"),
+        { 
+            theme: "outline",
+            size: "large",
+            type: "standard",
+            text: "signin_with",
+            shape: "rectangular",
+            logo_alignment: "center"
+        }  // customization attributes
     );
-    google.accounts.id.prompt(); // also display the One Tap dialog
+    //google.accounts.id.prompt(); // also display the One Tap dialog
 }
 
 function decodeJwtResponse(token) {
@@ -60,7 +67,7 @@ function handleCredentialResponse(response) {
     $("#email").text(responsePayload.email);
     $("#image").attr('src', responsePayload.picture);
     $(".data").css("display", "block");
-    $(".g_id_signin").css("display", "none");
+    //$(".g_id_signin").css("display", "none");
 }
 
 
