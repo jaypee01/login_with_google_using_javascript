@@ -7,17 +7,17 @@
 //     $(".g-signin2").css("display", "none");
 // }
 
-window.onload = function () {
-    google.accounts.id.initialize({
-        client_id: "879873924784-cfi7nis3k852gh17i3ma51ni6ge60ogf.apps.googleusercontent.com",
-        callback: handleCredentialResponse
-    });
-    google.accounts.id.renderButton(
-        document.getElementById("buttonDiv"),
-        { theme: "outline", size: "large" }  // customization attributes
-    );
-    google.accounts.id.prompt(); // also display the One Tap dialog
-}
+// window.onload = function () {
+//     google.accounts.id.initialize({
+//         client_id: "879873924784-cfi7nis3k852gh17i3ma51ni6ge60ogf.apps.googleusercontent.com",
+//         callback: handleCredentialResponse
+//     });
+//     google.accounts.id.renderButton(
+//         document.getElementById("buttonDiv"),
+//         { theme: "outline", size: "large" }  // customization attributes
+//     );
+//     google.accounts.id.prompt(); // also display the One Tap dialog
+// }
 
 function decodeJwtResponse(token) {
     var base64Url = token.split(".")[1];
@@ -35,7 +35,10 @@ function decodeJwtResponse(token) {
 
 function init() {
     gapi.load('auth2', function() {
-        gapi.auth2.init();
+        gapi.auth2.init({
+            client_id: '879873924784-cfi7nis3k852gh17i3ma51ni6ge60ogf.apps.googleusercontent.com'
+            // other configuration options if needed
+        });
       });
 }
 
